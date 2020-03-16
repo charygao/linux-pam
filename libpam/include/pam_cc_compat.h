@@ -32,4 +32,10 @@
 # define DIAG_POP_IGNORE_CAST_QUAL	/* empty */
 #endif
 
+#if PAM_GNUC_PREREQ(3, 0)
+# define PAM_SAME_TYPE(x_, y_)	__builtin_types_compatible_p(typeof(x_), typeof(y_))
+#else
+# define PAM_SAME_TYPE(x_, y_)	0
+#endif
+
 #endif /* PAM_CC_COMPAT_H */
